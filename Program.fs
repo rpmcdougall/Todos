@@ -5,9 +5,10 @@ open Microsoft.AspNetCore.Builder
 open Microsoft.AspNetCore.Hosting
 open Microsoft.Extensions.DependencyInjection
 open Giraffe
+open MongoDB.Driver
 open Todos.Http
-open TodoInMemory
-open System.Collections
+open TodoMongoDB
+open Todos
 
 let routes =
     choose [
@@ -19,8 +20,11 @@ let configureApp (app: IApplicationBuilder) =
     
 
 let configureServices (services: IServiceCollection) =
+    let mongo = MongoClient(Environment.GetEnvironmentVariable "MONGO_URL")
+    let db = mongo.GetDatabase "todos"
     services.AddGiraffe() |> ignore
-    services.AddTodoInMemory(Hashtable()) |> ignore
+    services.AddTodoMongoDB(db.GetCollection<Todo>("todos")) |> ignore
+    
 
 [<EntryPoint>]
 let main _ =

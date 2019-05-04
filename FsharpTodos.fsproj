@@ -9,6 +9,7 @@
     <Compile Include="Todos.fs" />
     <Compile Include="TodosHttp.fs" />
     <Compile Include="TodoInMemory.fs" />
+    <Compile Include="TodoMongoDB.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 

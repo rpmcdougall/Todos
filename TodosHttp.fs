@@ -28,11 +28,16 @@ module TodoHttp =
             
             PUT >=> routef "/todos/%s" (fun id ->
                 fun next context ->
-                    text ("update " + id) next context
+                    task {
+                        let save = context.GetService<TodoSave>()
+                        let! todo = context.BindJsonAsync<Todo>()
+                        let todo = { todo with Id = id }
+                        return! json (save todo) next context
+                    }
                 )
             
             DELETE >=> routef "/todos/%s" ( fun id ->
                 fun next context ->
-                    text ("delete " + id) next context                             
-                )
+                    let delete = context.GetService<TodoDelete>()
+                    json (delete id) next context)                            
         ]
