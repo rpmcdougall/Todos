@@ -19,7 +19,7 @@ dotnet run
 
 ## TODO
 
-- Learn Testing for F#
-- Figure out better error handling for Mongo DB connection (currently just times out, may be a limitation of the F# client)
-- Figure out dev/test/prod configuration
-- Try deploying to a cloud service
+- [ ] Learn Testing for F#
+- [ ] Figure out better error handling for Mongo DB connection (currently just times out, may be a limitation of the F# client)
+- [ ] Figure out dev/test/prod configuration
+- [ ] Try deploying to a cloud service
