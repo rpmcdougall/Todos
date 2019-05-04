@@ -1,0 +1,10 @@
+/Users/rpmmcdougall/dev/FsharpTodos/bin/Debug/netcoreapp2.2/FsharpTodos.deps.json
+/Users/rpmmcdougall/dev/FsharpTodos/bin/Debug/netcoreapp2.2/FsharpTodos.runtimeconfig.json
+/Users/rpmmcdougall/dev/FsharpTodos/bin/Debug/netcoreapp2.2/FsharpTodos.runtimeconfig.dev.json
+/Users/rpmmcdougall/dev/FsharpTodos/bin/Debug/netcoreapp2.2/FsharpTodos.dll
+/Users/rpmmcdougall/dev/FsharpTodos/bin/Debug/netcoreapp2.2/FsharpTodos.pdb
+/Users/rpmmcdougall/dev/FsharpTodos/obj/Debug/netcoreapp2.2/FsharpTodos.fsprojAssemblyReference.cache
+/Users/rpmmcdougall/dev/FsharpTodos/obj/Debug/netcoreapp2.2/FsharpTodos.AssemblyInfoInputs.cache
+/Users/rpmmcdougall/dev/FsharpTodos/obj/Debug/netcoreapp2.2/FsharpTodos.AssemblyInfo.fs
+/Users/rpmmcdougall/dev/FsharpTodos/obj/Debug/netcoreapp2.2/FsharpTodos.dll
+/Users/rpmmcdougall/dev/FsharpTodos/obj/Debug/netcoreapp2.2/FsharpTodos.pdb
