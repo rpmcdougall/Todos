@@ -1,10 +1,13 @@
 ﻿// Learn more about F# at http://fsharp.org
+open FsharpTodos
 open System
 open Microsoft.AspNetCore.Builder
 open Microsoft.AspNetCore.Hosting
 open Microsoft.Extensions.DependencyInjection
 open Giraffe
 open Todos.Http
+open TodoInMemory
+open System.Collections
 
 let routes =
     choose [
@@ -17,6 +20,7 @@ let configureApp (app: IApplicationBuilder) =
 
 let configureServices (services: IServiceCollection) =
     services.AddGiraffe() |> ignore
+    services.AddTodoInMemory(Hashtable()) |> ignore
 
 [<EntryPoint>]
 let main _ =
