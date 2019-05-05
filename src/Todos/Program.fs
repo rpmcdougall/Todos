@@ -23,16 +23,17 @@ let configureApp (app: IApplicationBuilder) =
     
 
 let configureServices (services: IServiceCollection) =
-    if Environment.GetEnvironmentVariable "APPENV" = "test" then
-        let mongo = MongoClient(Environment.GetEnvironmentVariable "MONGO_URL")
-        let db = mongo.GetDatabase "todos"
-        services.AddGiraffe() |> ignore
-        services.AddTodoMongoDB(db.GetCollection<Todo>("todos")) |> ignore
-    else
-         services.AddGiraffe() |> ignore
-         services.AddSingleton<TodoFind>(TodoInMemory.find(Hashtable())) |> ignore
-        
-
+    let env = services.BuildServiceProvider().GetService<IHostingEnvironment>()
+    match env.IsEnvironment("Test") with
+        |true ->
+            services.AddGiraffe() |> ignore
+            services.AddSingleton<TodoFind>(TodoInMemory.find(Hashtable())) |> ignore
+        |false ->
+            let mongo = MongoClient(Environment.GetEnvironmentVariable "MONGO_URL")
+            let db = mongo.GetDatabase "todos"
+            services.AddGiraffe() |> ignore
+            services.AddTodoMongoDB(db.GetCollection<Todo>("todos")) |> ignore
+            
 [<EntryPoint>]
 let main _ =
     WebHostBuilder()
