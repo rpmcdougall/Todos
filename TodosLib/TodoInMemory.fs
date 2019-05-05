@@ -9,12 +9,12 @@ let find(inMemory : Hashtable) (criteria : TodoCriteria) : Todo[] =
         | All -> inMemory.Values |> Seq.cast |> Array.ofSeq
         
 let save (inMemory : Hashtable) (todo : Todo) : Todo =
-    inMemory.Add(todo.Id, todo) |> ignore
+    inMemory.Add(todo.id, todo) |> ignore
     todo
 
 let delete(inMemory : Hashtable) (id : string) : bool =
-    inMemory.Remove(inMemory.[1])
-    if inMemory.[1] = null then true
+    inMemory.Remove(id)
+    if inMemory.[id] = null then true
     else false
     
     

@@ -16,7 +16,7 @@ module TodoHttp =
                     task {
                         let save = context.GetService<TodoSave>()
                         let! todo = context.BindJsonAsync<Todo>()
-                        let todo = { todo with Id = ShortGuid.fromGuid(Guid.NewGuid()) }
+                        let todo = { todo with id = ShortGuid.fromGuid(Guid.NewGuid()) }
                         return! json (save todo) next context
                     }
             
@@ -31,7 +31,7 @@ module TodoHttp =
                     task {
                         let save = context.GetService<TodoSave>()
                         let! todo = context.BindJsonAsync<Todo>()
-                        let todo = { todo with Id = id }
+                        let todo = { todo with id = id }
                         return! json (save todo) next context
                     }
                 )

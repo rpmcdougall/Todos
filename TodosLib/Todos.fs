@@ -1,9 +1,9 @@
 namespace TodosLib
 
 type Todo = {
-    Id: string
-    Text: string
-    Done: bool
+    id: string
+    text: string
+    completed: bool
 }
 
 type TodoSave = Todo -> Todo
