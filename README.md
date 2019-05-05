@@ -1,4 +1,4 @@
-﻿# FSharpTodos
+﻿# Todos
 Demo App demonstrating writing an API in F# with Giraffe and .NET Core
 
 [![CircleCI](https://circleci.com/gh/rpmcdougall/FSharpTodos/tree/master.svg?style=svg)](https://circleci.com/gh/rpmcdougall/FSharpTodos/tree/master)
