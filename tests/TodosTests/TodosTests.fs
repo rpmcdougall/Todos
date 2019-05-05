@@ -5,25 +5,8 @@ open System.Text
 open Microsoft.AspNetCore.TestHost
 open Xunit
 open Newtonsoft.Json
-open Microsoft.AspNetCore.Builder
-open Microsoft.AspNetCore.Hosting
-open Microsoft.Extensions.DependencyInjection
-open System
-open System.IO
 open HttpFunc
-open Todos
-
-let shouldContains actual expected = Assert.Contains(actual, expected) 
-let shouldEqual expected actual = Assert.Equal(expected, actual)
-let shouldNotNull expected = Assert.NotNull(expected)
-
-let createHost() =
-    WebHostBuilder()
-        .UseContentRoot(Directory.GetCurrentDirectory()) 
-        .UseEnvironment("Test")
-        .Configure(Action<IApplicationBuilder> App.configureApp)
-        .ConfigureServices(Action<IServiceCollection> App.configureServices)
-
+open Fixtures
 
 [<Fact>]
 let ``GET /todos should respond empty`` () =
@@ -35,3 +18,16 @@ let ``GET /todos should respond empty`` () =
     |> readText
     |> shouldEqual "[]"
 
+
+[<Fact>]
+let ``POST /todos should add a new todo`` () =
+    
+    use server =  new TestServer(createHost()) 
+    use client = server.CreateClient()
+    let data = JsonConvert.SerializeObject(getTestTodoRequest)
+    use content = new StringContent(data, Encoding.UTF8, "application/json");
+    
+    post client "todos" content
+    |> ensureSuccess
+    |> readText
+    |> shouldContains "\"text\":\"This is a test todo\""
