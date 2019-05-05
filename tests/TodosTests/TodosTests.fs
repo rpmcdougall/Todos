@@ -31,3 +31,26 @@ let ``POST /todos should add a new todo`` () =
     |> ensureSuccess
     |> readText
     |> shouldContains "\"text\":\"This is a test todo\""
+    
+    
+[<Fact>]
+let ``DELETE /todos/$id should remove an added todo todo`` () =
+    
+    use server =  new TestServer(createHost()) 
+    use client = server.CreateClient()
+    let data = JsonConvert.SerializeObject(getTestTodoRequest)
+    use content = new StringContent(data, Encoding.UTF8, "application/json");
+    
+    
+    let res =
+        post client "todos" content
+        |> ensureSuccess
+        |> readText
+        |> deserializeTodo
+        
+    let path = "todos/" + res.id
+    delete client path 
+        |> ensureSuccess
+        |> readText
+        |> shouldContains "true"
+    

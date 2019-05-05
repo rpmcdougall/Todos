@@ -3,6 +3,9 @@ module HttpFunc
 open System.Net
 open System.Net.Http
 open Xunit
+open FSharp.Json
+open TodosLib
+
 
 let runTask task = 
     task
@@ -43,3 +46,10 @@ let isOfType (response : HttpResponseMessage) (contentType : string)  =
     response
 
 let readText (response : HttpResponseMessage) = response.Content.ReadAsStringAsync() |> runTask
+
+let deserializeTodo (data : string) : TodosLib.Todo =
+   Json.deserialize<Todo> data
+   
+  
+   
+   
