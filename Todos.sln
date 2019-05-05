@@ -1,0 +1,34 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Todos", "Todos\Todos.fsproj", "{017939B3-26F8-47BE-9E92-940035EC7B08}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "TodosLib", "TodosLib\TodosLib.fsproj", "{C00CAC5C-7268-43A6-9A26-25FB39FF1B80}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "TodosTests", "tests\TodosTests\TodosTests.fsproj", "{95283BBE-7D60-44BA-B32A-382AEDEECA29}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{081F6EC5-47AE-4A10-80EB-6BF53A3E2831}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{017939B3-26F8-47BE-9E92-940035EC7B08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{017939B3-26F8-47BE-9E92-940035EC7B08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{017939B3-26F8-47BE-9E92-940035EC7B08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{017939B3-26F8-47BE-9E92-940035EC7B08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C00CAC5C-7268-43A6-9A26-25FB39FF1B80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C00CAC5C-7268-43A6-9A26-25FB39FF1B80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C00CAC5C-7268-43A6-9A26-25FB39FF1B80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C00CAC5C-7268-43A6-9A26-25FB39FF1B80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95283BBE-7D60-44BA-B32A-382AEDEECA29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95283BBE-7D60-44BA-B32A-382AEDEECA29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95283BBE-7D60-44BA-B32A-382AEDEECA29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95283BBE-7D60-44BA-B32A-382AEDEECA29}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
