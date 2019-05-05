@@ -11,6 +11,7 @@ open Giraffe
 open MongoDB.Driver
 open TodosLib.Http
 open TodosLib.TodoMongoDB
+open TodosLib.TodoInMemory
 open System.Collections
 
 let routes =
@@ -26,8 +27,9 @@ let configureServices (services: IServiceCollection) =
     let env = services.BuildServiceProvider().GetService<IHostingEnvironment>()
     match env.IsEnvironment("Test") with
         |true ->
+            let inMemory = Hashtable()
             services.AddGiraffe() |> ignore
-            services.AddSingleton<TodoFind>(TodoInMemory.find(Hashtable())) |> ignore
+            services.AddTodoInMemory(inMemory) |> ignore
         |false ->
             let mongo = MongoClient(Environment.GetEnvironmentVariable "MONGO_URL")
             let db = mongo.GetDatabase "todos"
