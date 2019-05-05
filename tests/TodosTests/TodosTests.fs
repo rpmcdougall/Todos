@@ -34,7 +34,7 @@ let ``POST /todos should add a new todo`` () =
     
     
 [<Fact>]
-let ``DELETE /todos/$id should remove an added todo todo`` () =
+let ``DELETE /todos/$id should remove an added todo`` () =
     
     use server =  new TestServer(createHost()) 
     use client = server.CreateClient()

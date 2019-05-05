@@ -10,23 +10,23 @@ let find (collection : IMongoCollection<Todo>) (criteria : TodoCriteria) : Todo 
                           |> Seq.toArray
                           
 let save (collection : IMongoCollection<Todo>) (todo : Todo) : Todo =
-  let todos = collection.Find(fun x -> x.Id = todo.Id).ToEnumerable()
+  let todos = collection.Find(fun x -> x.id = todo.id).ToEnumerable()
 
   match Seq.isEmpty todos with
   | true -> collection.InsertOne todo
   | false ->
-    let filter = Builders<Todo>.Filter.Eq((fun x -> x.Id), todo.Id)
+    let filter = Builders<Todo>.Filter.Eq((fun x -> x.id), todo.id)
     let update =
       Builders<Todo>.Update
-        .Set((fun x -> x.Text), todo.Text)
-        .Set((fun x -> x.Done), todo.Done)
+        .Set((fun x -> x.text), todo.text)
+        .Set((fun x -> x.completed), todo.completed)
 
     collection.UpdateOne(filter, update) |> ignore
 
   todo
   
 let delete (collection : IMongoCollection<Todo>) (id : string) : bool =
-  collection.DeleteOne(Builders<Todo>.Filter.Eq((fun x-> x.Id), id)).DeletedCount > 0L
+  collection.DeleteOne(Builders<Todo>.Filter.Eq((fun x-> x.id), id)).DeletedCount > 0L
   
 type IServiceCollection with
   member this.AddTodoMongoDB(collection : IMongoCollection<Todo>) =
