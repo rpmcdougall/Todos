@@ -5,8 +5,8 @@ jobs:
       - image: mcr.microsoft.com/dotnet/core/sdk:2.2
     steps:
       - checkout
-      - run: dotnet build src/Todos
-      - run: dotnet build src/TodosLib
+      - run: dotnet build Todos/
+      - run: dotnet build TodosLib/
       - run: dotnet restore tests/TodosTests
       - run: dotnet build tests/TodosTests
       - run: dotnet test --no-build tests/TodosTests 
