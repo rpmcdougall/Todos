@@ -1,4 +1,4 @@
-namespace Todos.Http
+namespace TodosLib.Http
 
 open Giraffe
 open Microsoft.AspNetCore.Http

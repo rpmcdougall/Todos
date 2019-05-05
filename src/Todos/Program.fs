@@ -1,14 +1,17 @@
 ﻿// Learn more about F# at http://fsharp.org
+module Todos.App
 open FsharpTodos
+
+open Todos
 open System
 open Microsoft.AspNetCore.Builder
 open Microsoft.AspNetCore.Hosting
 open Microsoft.Extensions.DependencyInjection
 open Giraffe
 open MongoDB.Driver
-open Todos.Http
+open TodosLib.Http
 open TodoMongoDB
-open Todos
+open System.Collections
 
 let routes =
     choose [
@@ -20,11 +23,15 @@ let configureApp (app: IApplicationBuilder) =
     
 
 let configureServices (services: IServiceCollection) =
-    let mongo = MongoClient(Environment.GetEnvironmentVariable "MONGO_URL")
-    let db = mongo.GetDatabase "todos"
-    services.AddGiraffe() |> ignore
-    services.AddTodoMongoDB(db.GetCollection<Todo>("todos")) |> ignore
-    
+    if Environment.GetEnvironmentVariable "APPENV" = "test" then
+        let mongo = MongoClient(Environment.GetEnvironmentVariable "MONGO_URL")
+        let db = mongo.GetDatabase "todos"
+        services.AddGiraffe() |> ignore
+        services.AddTodoMongoDB(db.GetCollection<Todo>("todos")) |> ignore
+    else
+         services.AddGiraffe() |> ignore
+         services.AddSingleton<TodoFind>(TodoInMemory.find(Hashtable())) |> ignore
+        
 
 [<EntryPoint>]
 let main _ =
