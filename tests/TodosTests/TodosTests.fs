@@ -19,7 +19,7 @@ let shouldNotNull expected = Assert.NotNull(expected)
 let createHost() =
     WebHostBuilder()
         .UseContentRoot(Directory.GetCurrentDirectory()) 
-        .UseEnvironment("test")
+        .UseEnvironment("Test")
         .Configure(Action<IApplicationBuilder> Todos.App.configureApp)
         .ConfigureServices(Action<IServiceCollection> Todos.App.configureServices)
 
