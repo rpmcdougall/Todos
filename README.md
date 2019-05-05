@@ -3,7 +3,7 @@ Demo App demonstrating writing an API in F# with Giraffe and .NET Core
 
 [![CircleCI](https://circleci.com/gh/rpmcdougall/Todos/tree/master.svg?style=svg)](https://circleci.com/gh/rpmcdougall/FSharpTodos/tree/master)
 
-Note: I accidentally overwrote the git history with a force push. You can view past commits in closed PRs if you are curious [here]("https://github.com/rpmcdougall/Todos/pulls?q=is%3Apr+is%3Aclosed").
+Note: I accidentally overwrote the git history with a force push. You can view past commits in closed PRs if you are curious [here](https://github.com/rpmcdougall/Todos/pulls?q=is%3Apr+is%3Aclosed).
 
 ## Local Development Environment
 
