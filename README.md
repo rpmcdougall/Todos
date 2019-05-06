@@ -9,6 +9,7 @@ Note: I accidentally overwrote the git history with a force push. You can view p
 
 - .NET Core 2.1+
 - MongoDB
+  -Requires MONGO_URL environment variable for configuration. Ex. `mongodb://localhost:27017/`
 
 To install dependencies run:
 ```
