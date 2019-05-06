@@ -9,6 +9,8 @@ Note: I accidentally overwrote the git history with a force push. You can view p
 
 - .NET Core 2.1+
 - MongoDB
+  - Requires MONGO_URL environment variable for configuration. Ex. `mongodb://localhost:27017/`
+  - [Local MongoDB Install](https://treehouse.github.io/installation-guides/mac/mongo-mac.html)
 
 To install dependencies run:
 ```
@@ -17,12 +19,17 @@ dotnet restore
 
 To start the applicaton:
 ```
-dotnet run
+MONGO_URL=mongodb://localhost:27017/ dotnet run --project Todos/
 ```
 
 ## TODO
 
-- [ ] Learn Testing for F#
+- [ ] Learn Basic Testing Strategies for web apps in F#
+    - [x]  [Integration Testing](https://github.com/rpmcdougall/Todos/blob/master/tests/TodosTests/TodosTests.fs) 
+    - [ ] Unit Testing 
+    - [ ] Property Testing 
 - [ ] Figure out better error handling for Mongo DB connection (currently just times out, may be a limitation of the F# client)
-- [x] Figure out dev/test/prod configuration
-- [ ] Try deploying to a cloud service
+- [x] Figure out basic environment management for dev/test/prod
+- [ ] Try deploying to a cloud service (Azure or Heroku)
+- [x] [Set up CI for automated builds/testing](https://github.com/rpmcdougall/Todos/blob/master/.circleci/config.yml)
+- [ ] Provide more documentation
